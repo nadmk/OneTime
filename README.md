@@ -1,8 +1,10 @@
 <p align="center"><img src="https://raw.githubusercontent.com/NickTehPro/OneTime/master/logo.png" /></p>
 
 ## About
-OneTime: Is a stupid implementation of a time based OTP (One Time Password) Generator using smsbox.gr API, written in java. DO NOT USE this thing for real life applications because it's unsecure.
+OneTime: Is a stupid implementation of a time based OTP (One Time Password) Generator using smsbox.gr API, written in java. DO NOT USE this thing for real life applications because it's unsecure. I also included a php example!
 
+## Example
+An example PHP OTP auth page is included that checks whether your OTP is valid or not. Just make a HTTP request like this: http://example.com/index.php?otp=<YOUROTP> Note: In order to work both pages should use the same "private" key
 ## License
 
 OneTime is licensed under the wtfpl License. See the LICENSE.md for more information.
