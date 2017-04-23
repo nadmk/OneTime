@@ -1,7 +1,7 @@
 <p align="center"><img src="https://raw.githubusercontent.com/NickTehPro/OneTime/master/logo.png" /></p>
 
 ## About
-OneTime: Is a stupid implementation of a time based OTP (One Time Password) Generator using smsbox.gr API written in java. DO NOT USE this thing for real life applications because it's unsecure.
+OneTime: Is a stupid implementation of a time based OTP (One Time Password) Generator using smsbox.gr API, written in java. DO NOT USE this thing for real life applications because it's unsecure.
 
 ## License
 
