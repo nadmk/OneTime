@@ -14,10 +14,6 @@ import java.security.MessageDigest;
 import java.util.Date;
 import java.util.Map;
 
-/**
- * This file is part of Oglofus Protection project.
- * Created by Nikolaos Grammatikos <nikosgram@protonmail.com> on 19/05/2017.
- */
 public class OneTime {
     private static final String SERVICE = "http://www.smsbox.gr/httpapi/sendsms.php";
 
@@ -27,53 +23,43 @@ public class OneTime {
     private final String sender;
     private final String key;
 
-    public OneTime(String username, String password, String recipient, String sender, String key) {
-        this.username = username;
-        this.password = password;
-        this.recipient = recipient;
-        this.sender = sender;
-        this.key = key;
-    }
-
-    public static void main(String[] args) throws Throwable {
-        if (args.length < 5) {
+    public OneTime(String[] args) throws Throwable {
+        if (args.length < 3) {
 
             System.out.println("*** ERROR *** Please, try to insert the requirement arguments.");
             System.out.println("Example: <recipient> <sender> <key>");
 
-            return;
+            throw new Throwable();
         }
-
-        //LOAD CONFIGURATION FILE.. YML
 
         Path path = Paths.get("./config.yml");
-
-        if (Files.notExists(path)) {
-
-        }
-
         Yaml yaml = new Yaml();
 
-        Map<String, Object> values = (Map<String, Object>) yaml
-                .load(Files.newInputStream(path));
+        Map<String, Object> values = null; //WHY NOT
+
+        if (Files.notExists(path)) {
+            Files.copy(getClass().getClassLoader().getResourceAsStream("config.yml"), path);
+        } else {
+            values = (Map<String, Object>) yaml.load(Files.newInputStream(path));
+        }
+
 
         if (!(isString("username", values) || isString("password", values))) {
 
             System.out.println("*** ERROR *** Please, check the configuration file. Is incorrect.");
 
-            return;
+            throw new Throwable();
         }
 
-        new OneTime(
-                (String) values.get("username"),
-                (String) values.get("password"),
-                args[2],
-                args[3],
-                args[5]
-        ).send();
+        this.username = (String) values.get("username");
+        this.password = (String) values.get("password");
+        this.recipient = args[0];
+        this.sender = args[1];
+        this.key = args[2];
     }
 
     private static boolean isString(String key, Map<String, Object> values) {
+        if (values == null) return false;
         if (!values.containsKey(key)) return false;
 
         Object value = values.get(key);
