@@ -9,6 +9,7 @@ An example PHP OTP auth page is included that checks whether your OTP is valid o
 
 OneTime is licensed under the wtfpl License. See the LICENSE.md for more information.
 
+Credits: Huge thanks to <a href="https://github.com/nikosgram13"> nikosgram13 </a> for optimizing and fixing the code!
 ## Disclaimer
 It is the final user's responsibility to obey all applicable local, state and federal laws. 
 The author assume no liability and are not responsible for any misuse or damage caused by this program.
